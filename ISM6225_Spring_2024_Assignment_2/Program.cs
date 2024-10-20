@@ -57,19 +57,33 @@ namespace Assignment_2
             Console.WriteLine(fibonacciNumber);
         }
 
-        // Question 1: Find Missing Numbers in Array
-        public static IList<int> FindMissingNumbers(int[] nums)
+
+public static IList<int> FindMissingNumbers(int[] nums)
+{
+    try
+    {
+        bool[] present = new bool[nums.Length + 1];
+
+        foreach (int num in nums)
         {
-            try
-            {
-                // Write your code here
-                return new List<int>(); // Placeholder
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            present[num] = true;
         }
+
+        IList<int> missing = new List<int>();
+        for (int i = 1; i <= nums.Length; i++)
+        {
+            if (!present[i])
+                missing.Add(i);
+        }
+
+        return missing;
+    }
+    catch (Exception)
+    {
+        throw;  
+    }
+}
+
 
         // Question 2: Sort Array by Parity
         public static int[] SortArrayByParity(int[] nums)
